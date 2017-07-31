@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <!-- 3rd Party CSS Libraries -->
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" type="text/css" href="main.css" />
+      <title>Popularity of Programming Languages</title>
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>Popularity of Programming Languages <small>2010 - 2015</small></h1>
+      <button class="btn btn-default" id="about" data-toggle="modal" data-target="#about-modal">About the Visualization</button>
+    </div>
+    <ul class="nav nav-pills nav-justified">
+      <li role="presentation" id="tab-2010" class="active"><a href="#">Start > 2010</a></li>
+      <li role="presentation" id="tab-2011"><a href="#">2011</a></li>
+      <li role="presentation" id="tab-2012"><a href="#">2012</a></li>
+      <li role="presentation" id="tab-2013"><a href="#">2013</a></li>
+      <li role="presentation" id="tab-2014"><a href="#">2014</a></li>
+      <li role="presentation" id="tab-2015"><a href="#">2015</a></li>
+      <li role="presentation" id="tab-explore"><a href="#">Explore</a></li>
+    </ul>
+
+    <div id="slide-header">
+      <h4 ></h4>
+    </div>
+
+    <div id="slide-annotations">
+      <ul class="list-group"></ul>
+    </div>
+
+    <div id="pie-chart-container"></div>
+
+    <div id="explore-container">
+      <!-- bubble chart -->
+      <!-- <svg id="bubble-chart" width="800" height="800" font-family="sans-serif" font-size="10" text-anchor="middle"></svg> -->
+      <!-- language list -->
+      <div id="language-list">
+        <ul class="list-group"></ul>
+      </div>
+      <!-- trend graphs -->
+      <div id="graph-container">
+        <div id="graph-title">
+          <select id="y-axis-selector" class="form-control">
+            <option>Git Commits</option>
+            <option>StackOverflow Questions</option>
+          </select>
+           <span>Per Year<span>
+        </div>
+        <div id="prompt"> Select languages on the left to plot them on the graph </div>
+        <svg id="line-graph"></svg>
+      </div>
+    </div>
+
+    <!-- About modal -->
+    <div id="about-modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">About the Visualization</h4>
+          </div>
+          <div class="modal-body">
+            <p>This narrative visualization follows a martini glass hybrid structure. The first part of the narrative is a journey through time where data for each year is displayed from one scene to the next (the stem of the martini glass). The final slide allows the user to interact with the data and play with different parameters - this is the cone of the martini glass structure.</br></br>
+            The charts used in the first part of the visualization are all pie charts in order to keep with visual consistency. The colors for each language in the pie are also kept consistent. The pie chart animates from each year to the next in order to create a smooth transition and to show the changes dynamically as the years progress. Annotations are provided on each slide to complement the pie chart and to add additional information to highlight specific data items or trends. These annotations follow a simple header plus bullet list style which is kept consistent throughout the narrative visualization. The final exploration slide only uses text and annotations to guide the user in how to explore the data.</br></br>
+            There are different triggers in the narrative visualization. The top part of the site is the navigation bar which starts at 2010 and progresses across the screen. This style is used to indicate that the user should explore each tab in order and it helps with showing the state of the narrative visualization. In the year-by-year slides, the user is told they can hover over pie slices for more information. This hover action shows a tooltip with the language, percentage, and value for the slice. The exploration scene uses empty checkboxes and dropdowns to trigger actions from the user. The help text also clues the user into understanding that they can hover over data points on the graph to get more information.</br></br>
+            The exploration page offers the user the chance to change data parameters. The list of languages on the left side of the page with the checkboxes encourages the user to select languages from the list to plot. The darkened fill on hover also is a visual effect to help the user understand that the items in the list are clickable. Once selected, the list item will turn the color of the line used to plot the language which also acts as a key for line graph. The dropdown above the line graph also shows the user that they have options to select from in terms of what data they’d like to graph.</br></br></p>
+
+            <ul><h5>User Interface Events</h5>
+              <li>Nav bar tabs: Shows order of the narrative visualization and provides a way for a user to go from slide to slide.</li>
+              <li>Pie chart hover: Shows user more information about the data for the pie slice.</li>
+              <li>Language list in the explore scene: Clickable items that a user can use to plot different languages in the adjacent graph.</li>
+              <li>Data source dropdown in the explore scene: A list of options of data sources that the user can graph for the selected languages.</li>
+              <li>Hover on data points in the explore scene: Shows a tooltip with more information on the value of the data for that year.</li>
+            </ul>
+
+            <ul><h5>Credits</h5>
+              <li><a href="http://bl.ocks.org/dbuezas/9306799">Animated Donut</a></li>
+              <li><a href="http://bl.ocks.org/markmarkoh/8700606">Animated Line Graph</a></li>
+              <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+              <li><a href="https://d3js.org/">D3</a></li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- 3rd Party JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="data/language-data.js"></script>
+    <script type="text/javascript" src="scripts/pie-chart.js"></script>
+    <!-- <script type="text/javascript" src="scripts/bubble-chart.js"></script> -->
+    <script type="text/javascript" src="scripts/line-graph.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+  </body>
+</html>
